@@ -35,7 +35,7 @@
         </li>
 
         <li class="treeview">
-          <a href="<?php echo base_url('index.php/admin/manajemenUser') ?>">
+          <a href="<?php echo base_url('index.php/admin/manajemen_user') ?>">
             <i class="fa fa-group"></i> <span>Manajemen User</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right">
@@ -49,7 +49,7 @@
         </li>
 
         <li class="treeview">
-          <a href="<?php echo base_url('') ?>">
+          <a href="<?php echo base_url('index.php/admin/pengaturan') ?>">
             <i class="fa fa-cog"></i> <span>Pengaturan</span>
           </a>
         </li>

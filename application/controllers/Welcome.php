@@ -8,7 +8,8 @@ class Welcome extends CI_Controller {
 		if ($this->session->userdata('id') != '') {
 			redirect ('admin/dashboard');
 		} else {
-			$this->load->view('login');
+			$data['pengaturan'] = $this->m_model->get('tb_pengaturan')->result();
+			$this->load->view('login', $data);
 		}
 	}
 

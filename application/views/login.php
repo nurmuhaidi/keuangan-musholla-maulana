@@ -29,11 +29,17 @@
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 
+    <?php
+      foreach ($pengaturan as $prn) {
+        # code...
+      }
+    ?>
+
   <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="<?php echo base_url('assets') ?>/index2.html" class="navbar-brand"><b>Musholla Maulana</b></a>
+          <a href="<?php echo base_url('assets') ?>/index2.html" class="navbar-brand"><b><?php echo $prn->namaMusholla; ?></b></a>
         </div>
       </div>
       <!-- /.container-fluid -->
@@ -46,7 +52,7 @@
       <section class="content-header">
         <h1>
           Sistem Keuangan Musholla
-          <small>Musholla Maulana</small>
+          <small><?php echo $prn->namaMusholla; ?></small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

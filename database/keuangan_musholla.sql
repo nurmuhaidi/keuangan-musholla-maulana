@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 07, 2020 at 04:40 AM
+-- Generation Time: Dec 07, 2020 at 04:08 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -60,6 +60,13 @@ CREATE TABLE `tb_pengaturan` (
   `telp` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_pengaturan`
+--
+
+INSERT INTO `tb_pengaturan` (`id`, `namaMusholla`, `alamat`, `telp`) VALUES
+(1, 'Musholla Maulana', 'Demak', '089128912');
+
 -- --------------------------------------------------------
 
 --
@@ -79,7 +86,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`, `createDate`) VALUES
-(1, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-12-07 10:01:17');
+(1, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-12-07 22:04:01');
 
 --
 -- Indexes for dumped tables
@@ -129,7 +136,7 @@ ALTER TABLE `tb_pemasukan_uang`
 -- AUTO_INCREMENT for table `tb_pengaturan`
 --
 ALTER TABLE `tb_pengaturan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
