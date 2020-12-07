@@ -29,8 +29,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Pemasukan Uang</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Pemasukan Barang</a></li>
+            <li><a href="<?php echo base_url('index.php/admin/pemasukan_uang') ?>"><i class="fa fa-circle-o"></i> Pemasukan Uang</a></li>
+            <li><a href="<?php echo base_url('index.php/admin/pemasukan_barang') ?>"><i class="fa fa-circle-o"></i> Pemasukan Barang</a></li>
           </ul>
         </li>
 
