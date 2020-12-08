@@ -36,9 +36,9 @@
 
         <table>
             <tr>
-                <td width="100px">Jumlah Data</td>
+                <td width="120px">Jumlah Donatur</td>
                 <td width="15px">:</td>
-                <td> <?php echo $jumlah_pemasukan_barang ?> </td>
+                <td> <?php echo $jumlah_pemasukan_barang ?> Donatur</td>
             </tr>
             <tr>
                 <td width="100px">Dicetak Oleh</td>

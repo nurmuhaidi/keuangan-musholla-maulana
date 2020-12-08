@@ -22,6 +22,32 @@
       <a href="<?php echo base_url('index.php/admin/pemasukan_uang/print') ?>" class="btn btn-success">
           <div class="fa fa-print"></div> Cetak Data
       </a>
+      <!-- data informasi -->
+      <table style="margin-top: 15px;">
+        <tr>
+          <td width="120px">Jumlah Donatur</td>
+          <td width="15px"> : </td>
+          <td>
+            <?php
+              $jumlahdonatur = $this->db->query("SELECT donatur FROM tb_pemasukan_uang ")->num_rows();
+              echo $jumlahdonatur;
+            ?>
+            Donatur
+          </td>
+        </tr>
+        <tr>
+          <td>Total Pemasukan</td>
+          <td> : </td>
+          <td>
+            <?php
+            $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
+            foreach ($totalpemasukan as $totaluang) {
+              echo "Rp. ". number_format($totaluang->total,0,',','.');
+            }
+            ?>
+          </td>
+        </tr>
+      </table>
 
       <div class="box box-primary" style="margin-top: 15px;">
         <div class="box-body">

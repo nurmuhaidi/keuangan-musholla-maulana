@@ -36,9 +36,9 @@
 
         <table>
             <tr>
-                <td width="100px">Jumlah Data</td>
+              <td width="120px">Jumlah Donatur</td>
                 <td width="15px">:</td>
-                <td> <?php echo $jumlah_pemasukan_uang ?> </td>
+                <td> <?php echo $jumlah_pemasukan_uang ?> Donatur</td>
             </tr>
             <tr>
                 <td width="100px">Dicetak Oleh</td>
@@ -54,6 +54,18 @@
                         echo date('d-M-Y H:i:s');
                     ?>
                 </td>
+            </tr>
+            <tr>
+              <td>Total Pemasukan</td>
+              <td> : </td>
+              <td>
+                <?php
+                $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
+                foreach ($totalpemasukan as $totaluang) {
+                  echo "Rp. ". number_format($totaluang->total,0,',','.');
+                }
+                ?>
+              </td>
             </tr>
         </table>
    

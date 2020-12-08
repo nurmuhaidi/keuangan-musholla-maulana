@@ -16,6 +16,25 @@
     <section class="content">
     <div class="row">
         <div class="col-md-4">
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3>
+                <?php
+                $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
+                foreach ($totalpemasukan as $totaluang) {
+                  echo "Rp. ". number_format($totaluang->total,0,',','.');
+                }
+                ?>
+              </h3>
+              <p>Total Pemasukan Uang</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-money"></i>
+            </div>
+            <a href="<?php echo base_url('index.php/admin/pemasukan_uang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
             <div class="box box-widget widget-user-2">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-blue">

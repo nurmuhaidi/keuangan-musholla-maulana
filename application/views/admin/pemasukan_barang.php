@@ -25,6 +25,20 @@
       <a href="<?php echo base_url('index.php/admin/pemasukan_barang/print') ?>" class="btn btn-success">
           <div class="fa fa-print"></div> Cetak Data
       </a>
+      <!-- data informasi -->
+      <table style="margin-top: 15px;">
+        <tr>
+          <td width="120px">Jumlah Donatur</td>
+          <td width="5%"> : </td>
+          <td>
+            <?php
+              $jumlahdonatur = $this->db->query("SELECT donatur FROM tb_pemasukan_barang ")->num_rows();
+              echo $jumlahdonatur;
+            ?>
+            Donatur
+          </td>
+        </tr>
+      </table>
 
       <div class="box box-primary" style="margin-top: 15px;">
         <div class="box-body">
