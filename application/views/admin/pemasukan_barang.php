@@ -22,9 +22,10 @@
           <div class="fa fa-plus"></div> Tambah Data
       </a>
 
-      <a href="<?php echo base_url('index.php/admin/pemasukan_barang/print') ?>" class="btn btn-success">
-          <div class="fa fa-print"></div> Cetak Data
-      </a>
+     <!-- Button Cetak -->
+     <button class="btn btn-success" data-toggle="modal" data-target="#cetakData">
+        <div class="fa fa-print"></div> Cetak Data
+     </button>
       <!-- data informasi -->
       <table style="margin-top: 15px;">
         <tr>
@@ -79,3 +80,37 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <!-- Modal Cetak Data -->
+  <div class="modal fade" id="cetakData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><div class="fa fa-print"></div> Cetak Data</h4>
+        </div>
+        <form action="<?php echo base_url('index.php/admin/pemasukan_barang/print') ?>" method="POST">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Dari Tanggal</label>
+                  <input type="date" class="form-control" name="tgl_awal" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Sampai Tanggal</label>
+                  <input type="date" class="form-control" name="tgl_akhir" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-danger"><div class="fa fa-trash"></div> Reset</button>
+            <button type="submit" class="btn btn-primary"><div class="fa fa-print"></div> Print</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

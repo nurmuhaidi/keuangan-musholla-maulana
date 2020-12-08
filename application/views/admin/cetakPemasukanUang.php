@@ -34,19 +34,30 @@
         <!-- Judul Dokumen -->
         <h1 style="text-align: center">Pemasukan Uang</h1>
 
-        <table>
+        <table width="100%" style="margin-top: 15px;">
             <tr>
               <td width="120px">Jumlah Donatur</td>
-                <td width="15px">:</td>
-                <td> <?php echo $jumlah_pemasukan_uang ?> Donatur</td>
+              <td width="15px">:</td>
+              <td> <?php echo $jumlah_pemasukan_uang ?> Donatur</td>
+              <td width="20%"> </td>
+              <td width="100px">Dicetak Oleh</td>
+              <td width="15px">:</td>
+              <td> <?php echo $this->session->userdata('nama'); ?> </td>
             </tr>
             <tr>
-                <td width="100px">Dicetak Oleh</td>
-                <td width="15px">:</td>
-                <td> <?php echo $this->session->userdata('nama'); ?> </td>
-            </tr>
-            <tr>
-                <td>Waktu</td>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>
+                  <?php
+                    if($tgl_awal == $tgl_akhir) {
+                      echo date('d-M-Y', strtotime($tgl_awal));
+                    } else {
+                      echo date('d-M-Y', strtotime($tgl_awal)) . " s/d ". date('d-M-Y',strtotime($tgl_akhir));
+                    }
+                  ?>
+                </td>
+                <td></td>
+                <td>Dicetak Pada</td>
                 <td>:</td>
                 <td>
                     <?php
@@ -55,18 +66,6 @@
                     ?>
                 </td>
             </tr>
-            <tr>
-              <td>Total Pemasukan</td>
-              <td> : </td>
-              <td>
-                <?php
-                $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
-                foreach ($totalpemasukan as $totaluang) {
-                  echo "Rp. ". number_format($totaluang->total,0,',','.');
-                }
-                ?>
-              </td>
-            </tr>
         </table>
    
         <!-- Tabel Data Barang -->
@@ -74,23 +73,33 @@
             <thead>
                 <tr>
                     <th width="5px">No</th>
-                    <th>Jumlah</th>
                     <th>Donatur</th>
+                    <th>Jumlah</th>
                     <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
                 <?php  
-                $no = 1;
-                foreach ($pemasukan_uang as $puang) {
+                  $no = 1;
+                  foreach ($pemasukan_uang as $puang) {
                 ?>
                 <tr>
                   <td><?= $no++; ?>.</td>
-                  <td><?= "Rp ". number_format($puang->jumlah,0,',','.') ?></td>
                   <td><?= $puang->donatur ?></td>
+                  <td><?= "Rp ". number_format($puang->jumlah,0,',','.') ?></td>
                   <td><?= date('d-M-Y', strtotime($puang->tanggal)) ?></td>
                 </tr>
                 <?php } ?>
+                <tr>
+                  <td colspan="2"><center><b>Total Pemasukan</b></center></td>
+                  <td>
+                    <?php
+                      foreach ($total_pemasukan_uang as $totaluang) {
+                        echo "Rp. ". number_format($totaluang->total,0,',','.');
+                      }
+                    ?>
+                  </td>
+                </tr>
             </tbody>
         </table>
 

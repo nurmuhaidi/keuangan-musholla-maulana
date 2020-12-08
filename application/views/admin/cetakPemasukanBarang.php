@@ -34,19 +34,30 @@
         <!-- Judul Dokumen -->
         <h1 style="text-align: center">Pemasukan Barang</h1>
 
-        <table>
+        <table width="100%" style="margin-top: 15px;">
             <tr>
-                <td width="120px">Jumlah Donatur</td>
-                <td width="15px">:</td>
-                <td> <?php echo $jumlah_pemasukan_barang ?> Donatur</td>
+              <td width="120px">Jumlah Donatur</td>
+              <td width="15px">:</td>
+              <td> <?php echo $jumlah_pemasukan_barang ?> Donatur</td>
+              <td width="20%"> </td>
+              <td width="100px">Dicetak Oleh</td>
+              <td width="15px">:</td>
+              <td> <?php echo $this->session->userdata('nama'); ?> </td>
             </tr>
             <tr>
-                <td width="100px">Dicetak Oleh</td>
-                <td width="15px">:</td>
-                <td> <?php echo $this->session->userdata('nama'); ?> </td>
-            </tr>
-            <tr>
-                <td>Waktu</td>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>
+                  <?php
+                    if($tgl_awal == $tgl_akhir) {
+                      echo date('d-M-Y', strtotime($tgl_awal));
+                    } else {
+                      echo date('d-M-Y', strtotime($tgl_awal)) . " s/d ". date('d-M-Y',strtotime($tgl_akhir));
+                    }
+                  ?>
+                </td>
+                <td></td>
+                <td>Dicetak Pada</td>
                 <td>:</td>
                 <td>
                     <?php

@@ -42,8 +42,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('index.php/admin/pengeluaran_uang') ?>"><i class="fa fa-circle-o"></i> pengeluaran Uang</a></li>
-            <li><a href="<?php echo base_url('index.php/admin/pengeluaran_barang') ?>"><i class="fa fa-circle-o"></i> pengeluaran Barang</a></li>
+            <li><a href="<?php echo base_url('index.php/admin/pengeluaran_uang') ?>"><i class="fa fa-circle-o"></i> Pengeluaran Uang</a></li>
+            <!-- <li><a href="<?php echo base_url('index.php/admin/pengeluaran_barang') ?>"><i class="fa fa-circle-o"></i> Pengeluaran Barang</a></li> -->
           </ul>
         </li>
 

@@ -70,10 +70,16 @@ class Pemasukan_uang extends CI_Controller {
 
     public function print()
     {
-       $data['pemasukan_uang'] = $this->m_model->get('tb_pemasukan_uang')->result();
-       $data['jumlah_pemasukan_uang'] = $this->m_model->get('tb_pemasukan_uang')->num_rows();
-       $data['title'] = 'Cetak Pemasukan Uang';
+        $tgl_awal   = $_POST['tgl_awal'];
+        $tgl_akhir  = $_POST['tgl_akhir'];
 
-       $this->load->view('admin/cetakPemasukanUang', $data);
+        $data['title'] = 'Cetak Pemasukan Uang';
+        $data['tgl_awal'] = $tgl_awal;
+        $data['tgl_akhir'] = $tgl_akhir;
+        $data['pemasukan_uang'] = $this->db->query('SELECT * FROM tb_pemasukan_uang WHERE tanggal BETWEEN "'.$tgl_awal.'" AND "'.$tgl_akhir.'" ')->result();
+        $data['jumlah_pemasukan_uang'] = $this->db->query('SELECT id FROM tb_pemasukan_uang WHERE tanggal BETWEEN "'.$tgl_awal.'" AND "'.$tgl_akhir.'" ')->num_rows();
+        $data['total_pemasukan_uang'] = $this->db->query('SELECT sum(jumlah) AS total FROM tb_pemasukan_uang WHERE tanggal BETWEEN "'.$tgl_awal.'" AND "'.$tgl_akhir.'" ')->result();
+
+        $this->load->view('admin/cetakPemasukanUang', $data);
     }
 }

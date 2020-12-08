@@ -93,10 +93,15 @@ class Pemasukan_barang extends CI_Controller {
 
     public function print()
     {
-       $data['pemasukan_barang'] = $this->m_model->get('tb_pemasukan_barang')->result();
-       $data['jumlah_pemasukan_barang'] = $this->m_model->get('tb_pemasukan_barang')->num_rows();
-       $data['title'] = 'Cetak Pemasukan Barang';
+        $tgl_awal   = $_POST['tgl_awal'];
+        $tgl_akhir  = $_POST['tgl_akhir'];
 
-       $this->load->view('admin/cetakPemasukanBarang', $data);
+        $data['title'] = 'Cetak Pemasukan Barang';
+        $data['tgl_awal'] = $tgl_awal;
+        $data['tgl_akhir'] = $tgl_akhir;
+        $data['pemasukan_barang'] = $this->db->query('SELECT * FROM tb_pemasukan_barang WHERE tanggal BETWEEN "'.$tgl_awal.'" AND "'.$tgl_akhir.'" ')->result();
+        $data['jumlah_pemasukan_barang'] = $this->db->query('SELECT id FROM tb_pemasukan_barang WHERE tanggal BETWEEN "'.$tgl_awal.'" AND "'.$tgl_akhir.'" ')->num_rows();
+        
+        $this->load->view('admin/cetakPemasukanBarang', $data);
     }
 }

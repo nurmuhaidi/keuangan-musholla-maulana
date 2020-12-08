@@ -19,37 +19,95 @@
 
       <!-- Button input -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah Data</button>
-      <a href="<?php echo base_url('index.php/admin/pengeluaran_uang/print') ?>" class="btn btn-success">
-          <div class="fa fa-print"></div> Cetak Data
-      </a>
-      <!-- data informasi -->
-      <table style="margin-top: 15px;">
-        <tr>
-          <td width="120px">Jumlah Donatur</td>
-          <td width="15px"> : </td>
-          <td>
-            <?php
-              $jumlahdonatur = $this->db->query("SELECT donatur FROM tb_pemasukan_uang ")->num_rows();
-              echo $jumlahdonatur;
-            ?>
-            Donatur
-          </td>
-        </tr>
-        <tr>
-          <td>Total Pemasukan</td>
-          <td> : </td>
-          <td>
-            <?php
-            $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
-            foreach ($totalpemasukan as $totaluang) {
-              echo "Rp. ". number_format($totaluang->total,0,',','.');
-            }
-            ?>
-          </td>
-        </tr>
-      </table>
+      
+      <!-- Button Cetak Data -->
+      <button class="btn btn-success" data-toggle="modal" data-target="#cetakData">
+        <div class="fa fa-print"></div> Cetak Data
+      </button>
 
-      <div class="box box-primary" style="margin-top: 15px;">
+      <!-- Data Informasi -->
+      <div class="row" style="margin-top: 15px;">
+        <div class="col-md-3">
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>
+                <?php
+                  $totalpemasukan = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pemasukan_uang ")->result();
+                  foreach ($totalpemasukan as $totaluang) {
+                    $totalpemasukanuang = $totaluang->total;
+                    echo "Rp. ". number_format($totaluang->total,0,',','.');
+                  }
+                ?>
+              </h3>
+              <p>Total Pemasukan Uang</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-book"></i>
+            </div>
+            <a href="<?php echo base_url('index.php/admin/pemasukan_uang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>
+                <?php
+                  $totalpengeluaran = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pengeluaran_uang ")->result();
+                  foreach ($totalpengeluaran as $totaluang) {
+                    $totalpengeluaranuang = $totaluang->total;
+                    echo "Rp. ". number_format($totaluang->total,0,',','.');
+                  }
+                ?>
+              </h3>
+              <p>Total Pengeluaran Uang</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-money"></i>
+            </div>
+            <a href="<?php echo base_url('index.php/admin/pengeluaran_uang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>
+                <?php
+                    echo "Rp. ". number_format($totalpemasukanuang - $totalpengeluaranuang,0,',','.');
+                ?>
+              </h3>
+              <p>Total Saldo</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-columns"></i>
+            </div>
+            <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>
+                <?php
+                  $jumlahdonatur = $this->db->query("SELECT donatur FROM tb_pemasukan_uang ")->num_rows();
+                  echo $jumlahdonatur;
+                ?>
+                Donatur
+              </h3>
+              <p>Total Donatur Uang</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tabel Data -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Data Pemasukan Uang</h3>
+        </div>
         <div class="box-body">
           <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered" id="example1">
@@ -162,3 +220,37 @@
       </div>
     </div>
   <?php } ?>
+
+  <!-- Modal Cetak Data -->
+  <div class="modal fade" id="cetakData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><div class="fa fa-print"></div> Cetak Data</h4>
+        </div>
+        <form action="<?php echo base_url('index.php/admin/pemasukan_uang/print') ?>" method="POST">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Dari Tanggal</label>
+                  <input type="date" class="form-control" name="tgl_awal" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Sampai Tanggal</label>
+                  <input type="date" class="form-control" name="tgl_akhir" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-danger"><div class="fa fa-trash"></div> Reset</button>
+            <button type="submit" class="btn btn-primary"><div class="fa fa-print"></div> Print</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
