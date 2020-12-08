@@ -16,7 +16,7 @@
     <section class="content">
     <div class="row">
         <div class="col-md-4">
-          <div class="small-box bg-primary">
+          <div class="small-box bg-blue">
             <div class="inner">
               <h3>
                 <?php
@@ -27,6 +27,25 @@
                 ?>
               </h3>
               <p>Total Pemasukan Uang</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-money"></i>
+            </div>
+            <a href="<?php echo base_url('index.php/admin/pengeluaran_uang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>
+                <?php
+                $totalpengeluaran = $this->db->query("SELECT sum(jumlah) AS total FROM tb_pengeluaran_uang ")->result();
+                foreach ($totalpengeluaran as $totaluang) {
+                  echo "Rp. ". number_format($totaluang->total,0,',','.');
+                }
+                ?>
+              </h3>
+              <p>Total Pengeluaran Uang</p>
             </div>
             <div class="icon">
               <i class="fa fa-money"></i>

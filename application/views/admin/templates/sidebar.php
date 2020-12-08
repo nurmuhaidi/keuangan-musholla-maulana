@@ -35,6 +35,19 @@
         </li>
 
         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-money"></i> <span>Pengeluaran</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('index.php/admin/pengeluaran_uang') ?>"><i class="fa fa-circle-o"></i> pengeluaran Uang</a></li>
+            <li><a href="<?php echo base_url('index.php/admin/pengeluaran_barang') ?>"><i class="fa fa-circle-o"></i> pengeluaran Barang</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
           <a href="<?php echo base_url('index.php/admin/manajemen_user') ?>">
             <i class="fa fa-group"></i> <span>Manajemen User</span>
             <span class="pull-right-container">

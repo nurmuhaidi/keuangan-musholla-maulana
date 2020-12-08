@@ -39,7 +39,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="<?php echo base_url('assets') ?>/index2.html" class="navbar-brand"><b><?php echo $prn->namaMusholla; ?></b></a>
+          <a href="<?php echo base_url('') ?>" class="navbar-brand"><b><?php echo $prn->namaMusholla; ?></b></a>
         </div>
       </div>
       <!-- /.container-fluid -->
@@ -78,11 +78,11 @@
               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
-              <div class="col-xs-8">
+              <div class="col-xs-7">
                 <input type="checkbox" id="checkbox"> Show Password
               </div>
               <!-- /.col -->
-              <div class="col-xs-4">
+              <div class="col-xs-5">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">
                   <div class="fa fa-sign-in"></div> Sign In</button>
               </div>

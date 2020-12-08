@@ -34,7 +34,7 @@ class Pemasukan_barang extends CI_Controller {
 	public function edit($id)
 	{
         $data['id'] = $id;
-		$data['title'] = 'Tambah Data';
+		$data['title'] = 'Edit Data';
         $where = array('id' => $id );
 
         $data['pemasukan_barang'] = $this->m_model->get_where($where, 'tb_pemasukan_barang')->result();

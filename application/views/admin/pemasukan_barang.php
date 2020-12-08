@@ -66,7 +66,7 @@
                   <td>
                     <a href="<?php echo base_url('index.php/admin/pemasukan_barang/edit/'.$puang->id ) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
-                    <a href="<?php echo base_url('index.php/admin/pemasukan_barang/delete/'.$puang->id ) ?>" class="btn btn-danger btn-sm tombol-yakin"><i class="fa fa-trash"></i> Delete</a>
+                    <a href="<?php echo base_url('index.php/admin/pemasukan_barang/delete/'.$puang->id ) ?>" class="btn btn-danger btn-sm tombol-yakin" data-isiData="Ingin menghapus data pemasukan barang ini ?"><i class="fa fa-trash"></i> Delete</a>
                   </td>
                 </tr>
                 <?php } ?>
