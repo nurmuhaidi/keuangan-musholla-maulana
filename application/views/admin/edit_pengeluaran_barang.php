@@ -21,25 +21,25 @@
         <div class="box-header with-border">
           <h3 class="box-title">Form Edit Data</h3>
           <!-- Tombol Kembali -->
-          <a href="<?php echo base_url('index.php/admin/pemasukan_barang') ?>" class="btn btn-primary btn-sm pull-right tombol-yakin" data-isiData="Ingin meninggalkan form edit data ini?">
+          <a href="<?php echo base_url('index.php/admin/pengeluaran_barang') ?>" class="btn btn-primary btn-sm pull-right tombol-yakin" data-isiData="Ingin meninggalkan form edit data ini?">
               <div class="fa fa-arrow-left"></div> Kembali
           </a>
         </div>
 
-        <form action="<?= base_url('index.php/admin/pemasukan_barang/update') ?>" method="post">
+        <form action="<?= base_url('index.php/admin/pengeluaran_barang/update') ?>" method="post">
 
-          <?php foreach ($pemasukan_barang as $pbarang) { ?>
+          <?php foreach ($pengeluaran_barang as $pbarang) { ?>
             <div class="box-body">
               <div class="form-group">
-                <label>Nama Barang</label>
+                <label>Keterangan</label>
                 <input type="hidden" class="form-control" name="id" value="<?= $id ?>" required>
-                <textarea name="namaBarang" class="form-control" rows="5"><?php echo $pbarang->namaBarang; ?></textarea>
+                <textarea name="keterangan" class="form-control" rows="5"><?php echo $pbarang->keterangan; ?></textarea>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Donatur</label>
-                    <input type="text" class="form-control" name="donatur" value="<?= $pbarang->donatur ?>" placeholder="Donatur" required>
+                    <label>Nama Barang</label>
+                    <input type="text" class="form-control" name="namaBarang" value="<?= $pbarang->namaBarang ?>" placeholder="Nama Barang" required>
                   </div>
                 </div>
                 <div class="col-md-6">

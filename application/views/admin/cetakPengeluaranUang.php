@@ -92,7 +92,7 @@
                 <?php } ?>
                 <tr>
                     <td colspan="2"><center><b>Total</b></center></td>
-                    <td>
+                    <td colspan="2">
                       <?php
                         foreach ($total_pengeluaran_uang as $totaluang) {
                           echo "Rp. ". number_format($totaluang->total,0,',','.');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 08, 2020 at 02:15 PM
+-- Generation Time: Dec 09, 2020 at 02:26 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -70,6 +70,19 @@ INSERT INTO `tb_pengaturan` (`id`, `namaMusholla`, `alamat`, `telp`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_pengeluaran_barang`
+--
+
+CREATE TABLE `tb_pengeluaran_barang` (
+  `id` int(11) NOT NULL,
+  `namaBarang` text NOT NULL,
+  `keterangan` text NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_pengeluaran_uang`
 --
 
@@ -124,6 +137,12 @@ ALTER TABLE `tb_pengaturan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_pengeluaran_barang`
+--
+ALTER TABLE `tb_pengeluaran_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -150,6 +169,12 @@ ALTER TABLE `tb_pemasukan_uang`
 --
 ALTER TABLE `tb_pengaturan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tb_pengeluaran_barang`
+--
+ALTER TABLE `tb_pengeluaran_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
